@@ -47,3 +47,12 @@ data/
 reference
 reference/
 
+*.idat
+*.png
+*.zip
+*.bgx
+*.csv
+*.rdata
+targets.txt
+*egsea-report/
+
