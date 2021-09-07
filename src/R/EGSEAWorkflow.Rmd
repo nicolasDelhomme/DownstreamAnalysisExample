@@ -163,6 +163,7 @@ Indexes for the c2 and c5 collections from MSigDB and for the KEGG pathways are 
 In the **EGSEAdata** gene set collections, Entrez IDs are used as they are widely adopted by the different source databases and tend to be more consistent and robust since there is one identifier per gene in a gene set. It is also relatively easy to convert other gene IDs into Entrez IDs.
 
 ```{r loadegsea, message=FALSE, warning=FALSE}
+options(connectionObserver = NULL)
 library(EGSEA)
 ```
 ```{r indexing}
