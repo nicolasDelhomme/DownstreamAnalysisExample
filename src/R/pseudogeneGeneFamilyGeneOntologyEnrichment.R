@@ -22,7 +22,7 @@ suppressWarnings(source(here("UPSCb-common/src/R/gopher.R")))
 #' # GSEA
 #' ## Data
 #' dat = your list of genes of interest (a subset of a population)
-dat <- scan(here("FIXME",what="character")
+dat <- scan(here("FIXME"),what="character")
 
 #' bg = your population (think what defines it; do we need it here?)
 bg <- scan("FIXME",what="character",skip=1)
