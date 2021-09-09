@@ -22,15 +22,19 @@ suppressWarnings(source(here("UPSCb-common/src/R/gopher.R")))
 #' # GSEA
 #' ## Data
 #' dat = your list of genes of interest (a subset of a population)
-dat <- scan("FIXME",what="character")
+dat <- scan(here("FIXME",what="character")
 
 #' bg = your population (think what defines it; do we need it here?)
 bg <- scan("FIXME",what="character",skip=1)
 
 #' ## Run
+#' We override some defaults
+httr::set_config(httr::config(ssl_verifypeer = 0L, ssl_verifyhost = 0L))
+
 #' We keep an eye on the running time
-system.time(enrichment <- gopher(dat,task = list("go","kegg","pfam"),
-                                 background = bg,url="pabies"))
+system.time(enrichment <- gopher(dat,task = list("go","kegg"),
+                                 background = bg,url="pabies",
+                                 host="https://gofer-rest"))
 
 #' ## Results
 #' You can export the go results to a file to summarise and visualise them in
@@ -43,9 +47,9 @@ write.table(enrichment$go[,c("FIXME","FIXME")],file="FIXME",
 #' Be creative, explore the data!
 alpha=0.01
 wordcloud(enrichment$kegg$id[enrichment$kegg$padj <= alpha])
-wordcloud(enrichment$pfam$id[enrichment$pfam$padj <= alpha])
 
 #' # Session Info
 #' ```{r session info, echo=FALSE}
 #'  sessionInfo()
 #' ```
+
